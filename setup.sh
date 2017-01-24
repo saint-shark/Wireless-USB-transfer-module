@@ -11,6 +11,10 @@ read SSID
 echo "Enter password for $SSID"
 read PASSWD
 
+# This package automatically mounts USB devices on Pi
+apt-get install usbmount
+
+
 apt-get remove --purge hostapd
 apt-get install hostapd dnsmasq
 
