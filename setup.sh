@@ -84,4 +84,19 @@ EOF
 
 systemctl enable hostapd
 
+# making a script for mounting the USB port on python SimpleHTTPServer everytime Raspberry Pi reboots(or plugged in)
+
+	# created a temporary file mycron to backup the previous cron jobs
+	crontab -l >> mycron 
+
+	# adding new job to mycron file
+	echo "@reboot cd /media/ && sudo python -m SimpleHTTPServer" >> /home/pi/mycron 
+
+	# updating the cron job list
+	crontab mycron 
+
+	# removing the temporary file
+	rm mycron  
+
+
 echo "Reboot raspberry pi"
